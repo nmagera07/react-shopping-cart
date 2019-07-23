@@ -14,15 +14,28 @@ function App() {
 	const [cart, setCart] = useState([]);
 
 	const addItem = item => {
-		localStorage.setItem('key', item)
+		const newItem = JSON.stringify(item)
+		if(item.id === 1) {
+			 localStorage.setItem(`${item.id}`, `${newItem}`)
+		} else if(item.id === 2) {
+			 localStorage.setItem(`${item.id}`, `${newItem}`)
+		} else if(item.id === 3) {
+			 localStorage.setItem(`${item.id}`, `${newItem}`)
+		} else if(item.id === 4) {
+			 localStorage.setItem(`${item.id}`, `${newItem}`)
+		}
+		
 		setCart([...cart, item]);
 	};
 
 	const deleteItem = (id) => {
+		localStorage.removeItem(`${id}`)
 		setCart(cart.filter(item => item.id !== id))
 	}
 
-	console.log({cart})
+	
+
+	console.log("products", products[0].id)
 	return (
 		<div className="App">
 			<ProductContext.Provider value={{ products, addItem }}>
